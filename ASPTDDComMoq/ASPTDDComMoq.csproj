@@ -124,6 +124,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\ContatoViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -164,7 +165,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -173,6 +173,16 @@
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ASPTDDComMoq.Entities\ASPTDDComMoq.Entities.csproj">
+      <Project>{d8614d6d-be2f-4b64-a088-67afea2bcc4c}</Project>
+      <Name>ASPTDDComMoq.Entities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ASPTDDComMoq.Services\ASPTDDComMoq.Services.csproj">
+      <Project>{66F81498-0F5E-4BBD-BC37-0711E7B6A052}</Project>
+      <Name>ASPTDDComMoq.Services</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

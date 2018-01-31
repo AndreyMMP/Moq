@@ -1,16 +1,30 @@
-﻿using System;
+﻿using ASPTDDComMoq.Models;
+using ASPTDDComMoq.Services;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
 namespace ASPTDDComMoq.Controllers
 {
     public class HomeController : Controller
     {
+        private IContatoService _contatoService;
+        public HomeController(IContatoService contatoService)
+        {
+            _contatoService = contatoService;
+        }
         public ActionResult Index()
         {
-            return View();
+            var contatos = _contatoService.ObterTodosContatos();
+            var viewModel = new List<ContatoViewModel>(from contato in contatos
+                                                       select new ContatoViewModel()
+                                                       {
+                                                           Id = contato.Id,
+                                                           Nome = contato.Nome,
+                                                           Sobrenome = contato.Sobrenome,
+                                                           Email = contato.Email
+                                                       });
+            return View(viewModel);
         }
 
         public ActionResult About()

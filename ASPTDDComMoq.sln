@@ -7,6 +7,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ASPTDDComMoq", "ASPTDDComMo
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ASPTDDComMoq.Tests", "ASPTDDComMoq.Tests\ASPTDDComMoq.Tests.csproj", "{B227B212-89EA-47DD-B0D9-291B92A5302E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ASPTDDComMoq.Entities", "ASPTDDComMoq.Entities\ASPTDDComMoq.Entities.csproj", "{D8614D6D-BE2F-4B64-A088-67AFEA2BCC4C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ASPTDDComMoq.Services", "ASPTDDComMoq.Services\ASPTDDComMoq.Services.csproj", "{66F81498-0F5E-4BBD-BC37-0711E7B6A052}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +25,14 @@ Global
 		{B227B212-89EA-47DD-B0D9-291B92A5302E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B227B212-89EA-47DD-B0D9-291B92A5302E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B227B212-89EA-47DD-B0D9-291B92A5302E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D8614D6D-BE2F-4B64-A088-67AFEA2BCC4C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D8614D6D-BE2F-4B64-A088-67AFEA2BCC4C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D8614D6D-BE2F-4B64-A088-67AFEA2BCC4C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D8614D6D-BE2F-4B64-A088-67AFEA2BCC4C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{66F81498-0F5E-4BBD-BC37-0711E7B6A052}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{66F81498-0F5E-4BBD-BC37-0711E7B6A052}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{66F81498-0F5E-4BBD-BC37-0711E7B6A052}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{66F81498-0F5E-4BBD-BC37-0711E7B6A052}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

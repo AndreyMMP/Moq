@@ -1,54 +1,69 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Web.Mvc;
+﻿using ASPTDDComMoq.Controllers;
+using ASPTDDComMoq.Entities;
+using ASPTDDComMoq.Models;
+using ASPTDDComMoq.Services;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using ASPTDDComMoq;
-using ASPTDDComMoq.Controllers;
+using Moq;
+using System.Collections.Generic;
+using System.Web.Mvc;
 
 namespace ASPTDDComMoq.Tests.Controllers
 {
     [TestClass]
     public class HomeControllerTest
     {
-        [TestMethod]
-        public void Index()
+        private Mock<IContatoService> _mockContatoService;
+        private HomeController _controller;
+
+        [TestInitialize]
+        public void TestInitialize()
         {
-            // Arrange
-            HomeController controller = new HomeController();
+            _mockContatoService = new Mock<IContatoService>();
+            _controller = new HomeController(_mockContatoService.Object);
+        }
 
-            // Act
-            ViewResult result = controller.Index() as ViewResult;
-
-            // Assert
-            Assert.IsNotNull(result);
+        [TestCleanup]
+        public void TestCleanup()
+        {
+            _mockContatoService.VerifyAll();
         }
 
         [TestMethod]
-        public void About()
+        public void Index_RetornoEsperadoView()
         {
-            // Arrange
-            HomeController controller = new HomeController();
+            var contatos = new List<Contato>
+            {
+                new Contato()
+                {
+                    Id = 1,
+                    Nome = "Andrey",
+                    Sobrenome = "M. Medeiros Pinto",
+                    Email = "anddxd@hotmail.com"
+                }
+            };
 
-            // Act
-            ViewResult result = controller.About() as ViewResult;
+            _mockContatoService.Setup(x => x.ObterTodosContatos()).Returns(contatos);
 
-            // Assert
-            Assert.AreEqual("Your application description page.", result.ViewBag.Message);
-        }
-
-        [TestMethod]
-        public void Contact()
-        {
-            // Arrange
-            HomeController controller = new HomeController();
-
-            // Act
-            ViewResult result = controller.Contact() as ViewResult;
-
-            // Assert
-            Assert.IsNotNull(result);
+            var modelEsperada = new List<ContatoViewModel>();
+            foreach (var contato in contatos)
+            {
+                modelEsperada.Add(new ContatoViewModel()
+                {
+                    Id = contato.Id,
+                    Nome = contato.Nome,
+                    Sobrenome = contato.Sobrenome,
+                    Email = contato.Sobrenome
+                });
+            }
+            var resultado = _controller.Index() as ViewResult;
+            var modelAtual = resultado.Model as List<ContatoViewModel>;
+            for (int i = 0; i < modelAtual.Count; i++)
+            {
+                Assert.AreEqual(modelEsperada[i].Id, modelAtual[i].Id);
+                Assert.AreEqual(modelEsperada[i].Nome, modelEsperada[i].Nome);
+                Assert.AreEqual(modelEsperada[i].Sobrenome, modelEsperada[i].Sobrenome);
+                Assert.AreEqual(modelEsperada[i].Email, modelEsperada[i].Email);
+            }
         }
     }
 }
